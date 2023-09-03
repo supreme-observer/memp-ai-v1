@@ -1,8 +1,9 @@
-FROM tiangolo/uvicorn-gunicorn-fastapi:python3.8
+FROM tiangolo/uvicorn-gunicorn-fastapi:python3.11
 
-COPY ./app /app
+COPY . .
 
 RUN pip install --no-cache-dir fastapi uvicorn
+RUN pip install -r requirements.txt
 
 EXPOSE 8000
 
