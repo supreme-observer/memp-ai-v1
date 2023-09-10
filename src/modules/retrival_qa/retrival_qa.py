@@ -9,12 +9,14 @@ from langchain.chains.qa_with_sources import load_qa_with_sources_chain
 from langchain.chains import RetrievalQAWithSourcesChain
 from langchain.document_loaders import DirectoryLoader
 from langchain.text_splitter import CharacterTextSplitter
+from langchain.agents.agent_types import AgentType
+
 
 import pinecone
 
 load_dotenv()
 
-class Cortex:
+class RetrivalQA:
     def __init__(self) -> None:
         OPEN_API_KEY = os.environ["OPENAI_API_KEY"]
         PINECONE_API_KEY = os.environ["PINECONE_API_KEY"]
@@ -41,7 +43,7 @@ class Cortex:
             return_source_documents=False
         )
 
-    def ask(self, question: str) -> str:
+    def general_query(self, question: str) -> str:
         response = self._qa_models({"question":question})
         return {"answer" : response.get("answer"), "sources" : response.get("sources")}
     def add_documents_to_vector_store(self):
