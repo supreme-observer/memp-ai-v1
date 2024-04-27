@@ -42,7 +42,6 @@ class RetrivalQA:
             retriever=_retriever,
             return_source_documents=False
         )
-
     def general_query(self, question: str) -> str:
         response = self._qa_models({"question":question})
         return {"answer" : response.get("answer"), "sources" : response.get("sources")}

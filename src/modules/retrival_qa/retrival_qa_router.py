@@ -1,5 +1,6 @@
 from fastapi import APIRouter
 from pydantic import BaseModel
+from src.common.dataclass import QueryRequest, QueryResponse
 
 from src.modules.retrival_qa.retrival_qa_router import RetrivalQA
 
@@ -9,11 +10,6 @@ retrival_qa_router = APIRouter(prefix='/retrival-qa')
 def read_root():
     return {"Hey Whatupp, this is a retrival QA system"}
 
-class QueryRequest(BaseModel):
-    query: str
-class QueryResponse(BaseModel):
-    answer: str
-    sources: str
 # Create an instance of the Bot class
 
 

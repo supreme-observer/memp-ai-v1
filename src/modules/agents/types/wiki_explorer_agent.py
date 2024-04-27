@@ -39,5 +39,6 @@ class WikiExplorerAgent:
             result = agent(query)
             print(f'Spent a total of {cb.total_tokens} tokens')
         return result
+    
     def lookup_from_wikipedia(self,query):
         return self.count_tokens(self.docstore_agent, query)
